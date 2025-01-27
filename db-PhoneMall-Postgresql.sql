@@ -19,20 +19,20 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP DATABASE "PhoneMaill";
+DROP DATABASE "PhoneMall";
 --
 -- TOC entry 4996 (class 1262 OID 21477)
--- Name: PhoneMaill
+-- Name: PhoneMall
 
 ; Type: DATABASE; Schema: -; Owner: KC_User
 --
 
-CREATE DATABASE "PhoneMaill" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'English_United States.1252';
+CREATE DATABASE "PhoneMall" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'English_United States.1252';
 
 
-ALTER DATABASE "PhoneMaill" OWNER TO "KC_User";
+ALTER DATABASE "PhoneMall" OWNER TO "KC_User";
 
---connect -reuse-previous=on "dbname='PhoneMaill'"
+--connect -reuse-previous=on "dbname='PhoneMall'"
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
