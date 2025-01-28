@@ -5,7 +5,7 @@
 -- Dumped from database version 17.2
 -- Dumped by pg_dump version 17.2
 
--- Started on 2025-01-27 11:11:24
+-- Started on 2025-01-28 18:48:23
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -21,10 +21,8 @@ SET row_security = off;
 
 DROP DATABASE "PhoneMall";
 --
--- TOC entry 4996 (class 1262 OID 21477)
--- Name: PhoneMall
-
-; Type: DATABASE; Schema: -; Owner: KC_User
+-- TOC entry 4996 (class 1262 OID 22361)
+-- Name: PhoneMall; Type: DATABASE; Schema: -; Owner: KC_User
 --
 
 CREATE DATABASE "PhoneMall" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'English_United States.1252';
@@ -32,7 +30,7 @@ CREATE DATABASE "PhoneMall" WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_P
 
 ALTER DATABASE "PhoneMall" OWNER TO "KC_User";
 
---connect -reuse-previous=on "dbname='PhoneMall'"
+\connect "PhoneMall"
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -47,7 +45,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 4 (class 2615 OID 2200)
+-- TOC entry 5 (class 2615 OID 22632)
 -- Name: public; Type: SCHEMA; Schema: -; Owner: pg_database_owner
 --
 
@@ -58,7 +56,7 @@ ALTER SCHEMA public OWNER TO pg_database_owner;
 
 --
 -- TOC entry 4997 (class 0 OID 0)
--- Dependencies: 4
+-- Dependencies: 5
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: pg_database_owner
 --
 
@@ -70,12 +68,12 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 220 (class 1259 OID 21811)
+-- TOC entry 217 (class 1259 OID 22633)
 -- Name: categories; Type: TABLE; Schema: public; Owner: KC_User
 --
 
 CREATE TABLE public.categories (
-    categoryid integer NOT NULL,
+    category_id integer NOT NULL,
     name character varying(255) NOT NULL
 );
 
@@ -83,7 +81,7 @@ CREATE TABLE public.categories (
 ALTER TABLE public.categories OWNER TO "KC_User";
 
 --
--- TOC entry 219 (class 1259 OID 21810)
+-- TOC entry 218 (class 1259 OID 22636)
 -- Name: categories_categoryid_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -99,30 +97,30 @@ CREATE SEQUENCE public.categories_categoryid_seq
 ALTER SEQUENCE public.categories_categoryid_seq OWNER TO "KC_User";
 
 --
--- TOC entry 4998 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 4999 (class 0 OID 0)
+-- Dependencies: 218
 -- Name: categories_categoryid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
-ALTER SEQUENCE public.categories_categoryid_seq OWNED BY public.categories.categoryid;
+ALTER SEQUENCE public.categories_categoryid_seq OWNED BY public.categories.category_id;
 
 
 --
--- TOC entry 230 (class 1259 OID 21870)
+-- TOC entry 219 (class 1259 OID 22637)
 -- Name: product_images; Type: TABLE; Schema: public; Owner: KC_User
 --
 
 CREATE TABLE public.product_images (
-    imageid integer NOT NULL,
-    imagepath text NOT NULL,
-    productid integer
+    image_id integer NOT NULL,
+    image_path text NOT NULL,
+    product_id integer
 );
 
 
 ALTER TABLE public.product_images OWNER TO "KC_User";
 
 --
--- TOC entry 229 (class 1259 OID 21869)
+-- TOC entry 220 (class 1259 OID 22642)
 -- Name: product_images_imageid_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -138,35 +136,35 @@ CREATE SEQUENCE public.product_images_imageid_seq
 ALTER SEQUENCE public.product_images_imageid_seq OWNER TO "KC_User";
 
 --
--- TOC entry 4999 (class 0 OID 0)
--- Dependencies: 229
+-- TOC entry 5000 (class 0 OID 0)
+-- Dependencies: 220
 -- Name: product_images_imageid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
-ALTER SEQUENCE public.product_images_imageid_seq OWNED BY public.product_images.imageid;
+ALTER SEQUENCE public.product_images_imageid_seq OWNED BY public.product_images.image_id;
 
 
 --
--- TOC entry 234 (class 1259 OID 21898)
+-- TOC entry 221 (class 1259 OID 22643)
 -- Name: product_options; Type: TABLE; Schema: public; Owner: KC_User
 --
 
 CREATE TABLE public.product_options (
-    optionid integer NOT NULL,
+    option_id integer NOT NULL,
     color character varying(100),
-    colorpriceadjustment numeric(10,2),
+    color_price_adjustment numeric(10,2),
     storage character varying(100),
-    storagepriceadjustment numeric(10,2),
+    storage_price_adjustment numeric(10,2),
     quantity integer DEFAULT 0,
-    finalprice numeric(10,2),
-    productid integer
+    final_price numeric(10,2),
+    product_id integer
 );
 
 
 ALTER TABLE public.product_options OWNER TO "KC_User";
 
 --
--- TOC entry 233 (class 1259 OID 21897)
+-- TOC entry 222 (class 1259 OID 22647)
 -- Name: product_options_optionid_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -182,34 +180,34 @@ CREATE SEQUENCE public.product_options_optionid_seq
 ALTER SEQUENCE public.product_options_optionid_seq OWNER TO "KC_User";
 
 --
--- TOC entry 5000 (class 0 OID 0)
--- Dependencies: 233
+-- TOC entry 5001 (class 0 OID 0)
+-- Dependencies: 222
 -- Name: product_options_optionid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
-ALTER SEQUENCE public.product_options_optionid_seq OWNED BY public.product_options.optionid;
+ALTER SEQUENCE public.product_options_optionid_seq OWNED BY public.product_options.option_id;
 
 
 --
--- TOC entry 228 (class 1259 OID 21852)
+-- TOC entry 223 (class 1259 OID 22648)
 -- Name: products; Type: TABLE; Schema: public; Owner: KC_User
 --
 
 CREATE TABLE public.products (
-    productid integer NOT NULL,
+    product_id integer NOT NULL,
     name character varying(255) NOT NULL,
-    retailprice numeric(10,2) NOT NULL,
-    createddate timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    retail_price numeric(10,2) NOT NULL,
+    created_date timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     warranty integer,
-    subcategoryid integer,
-    promotionid integer
+    sub_category_id integer,
+    promotion_id integer
 );
 
 
 ALTER TABLE public.products OWNER TO "KC_User";
 
 --
--- TOC entry 227 (class 1259 OID 21851)
+-- TOC entry 224 (class 1259 OID 22652)
 -- Name: products_productid_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -225,27 +223,27 @@ CREATE SEQUENCE public.products_productid_seq
 ALTER SEQUENCE public.products_productid_seq OWNER TO "KC_User";
 
 --
--- TOC entry 5001 (class 0 OID 0)
--- Dependencies: 227
+-- TOC entry 5002 (class 0 OID 0)
+-- Dependencies: 224
 -- Name: products_productid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
-ALTER SEQUENCE public.products_productid_seq OWNED BY public.products.productid;
+ALTER SEQUENCE public.products_productid_seq OWNED BY public.products.product_id;
 
 
 --
--- TOC entry 224 (class 1259 OID 21830)
+-- TOC entry 225 (class 1259 OID 22653)
 -- Name: promotion_details; Type: TABLE; Schema: public; Owner: KC_User
 --
 
 CREATE TABLE public.promotion_details (
-    promotiondetailid integer NOT NULL,
+    promotion_detail_id integer NOT NULL,
     name character varying(255) NOT NULL,
-    discounttype character varying(50),
-    discountvalue numeric(10,2),
+    discount_type character varying(50),
+    discount_value numeric(10,2),
     gift character varying(255),
-    startdate date,
-    enddate date,
+    start_date date,
+    end_date date,
     status boolean DEFAULT true
 );
 
@@ -253,7 +251,7 @@ CREATE TABLE public.promotion_details (
 ALTER TABLE public.promotion_details OWNER TO "KC_User";
 
 --
--- TOC entry 223 (class 1259 OID 21829)
+-- TOC entry 226 (class 1259 OID 22659)
 -- Name: promotion_details_promotiondetailid_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -269,29 +267,29 @@ CREATE SEQUENCE public.promotion_details_promotiondetailid_seq
 ALTER SEQUENCE public.promotion_details_promotiondetailid_seq OWNER TO "KC_User";
 
 --
--- TOC entry 5002 (class 0 OID 0)
--- Dependencies: 223
+-- TOC entry 5003 (class 0 OID 0)
+-- Dependencies: 226
 -- Name: promotion_details_promotiondetailid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
-ALTER SEQUENCE public.promotion_details_promotiondetailid_seq OWNED BY public.promotion_details.promotiondetailid;
+ALTER SEQUENCE public.promotion_details_promotiondetailid_seq OWNED BY public.promotion_details.promotion_detail_id;
 
 
 --
--- TOC entry 226 (class 1259 OID 21840)
+-- TOC entry 227 (class 1259 OID 22660)
 -- Name: promotions; Type: TABLE; Schema: public; Owner: KC_User
 --
 
 CREATE TABLE public.promotions (
-    promotionid integer NOT NULL,
-    promotiondetailid integer
+    promotion_id integer NOT NULL,
+    promotiondetail_id integer
 );
 
 
 ALTER TABLE public.promotions OWNER TO "KC_User";
 
 --
--- TOC entry 225 (class 1259 OID 21839)
+-- TOC entry 228 (class 1259 OID 22663)
 -- Name: promotions_promotionid_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -307,34 +305,34 @@ CREATE SEQUENCE public.promotions_promotionid_seq
 ALTER SEQUENCE public.promotions_promotionid_seq OWNER TO "KC_User";
 
 --
--- TOC entry 5003 (class 0 OID 0)
--- Dependencies: 225
+-- TOC entry 5004 (class 0 OID 0)
+-- Dependencies: 228
 -- Name: promotions_promotionid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
-ALTER SEQUENCE public.promotions_promotionid_seq OWNED BY public.promotions.promotionid;
+ALTER SEQUENCE public.promotions_promotionid_seq OWNED BY public.promotions.promotion_id;
 
 
 --
--- TOC entry 242 (class 1259 OID 21961)
+-- TOC entry 229 (class 1259 OID 22664)
 -- Name: purchase_order_details; Type: TABLE; Schema: public; Owner: KC_User
 --
 
 CREATE TABLE public.purchase_order_details (
-    purchaseorderdetailid integer NOT NULL,
+    purchase_order_detail_id integer NOT NULL,
     quantity integer NOT NULL,
-    unitcost numeric(10,2) NOT NULL,
-    subtotal numeric(10,2),
-    productid integer,
-    optionid integer,
-    purchaseorderid integer
+    unit_cost numeric(10,2) NOT NULL,
+    sub_total numeric(10,2),
+    product_id integer,
+    option_id integer,
+    purchase_order_id integer
 );
 
 
 ALTER TABLE public.purchase_order_details OWNER TO "KC_User";
 
 --
--- TOC entry 241 (class 1259 OID 21960)
+-- TOC entry 230 (class 1259 OID 22667)
 -- Name: purchase_order_details_purchaseorderdetailid_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -350,25 +348,25 @@ CREATE SEQUENCE public.purchase_order_details_purchaseorderdetailid_seq
 ALTER SEQUENCE public.purchase_order_details_purchaseorderdetailid_seq OWNER TO "KC_User";
 
 --
--- TOC entry 5004 (class 0 OID 0)
--- Dependencies: 241
+-- TOC entry 5005 (class 0 OID 0)
+-- Dependencies: 230
 -- Name: purchase_order_details_purchaseorderdetailid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
-ALTER SEQUENCE public.purchase_order_details_purchaseorderdetailid_seq OWNED BY public.purchase_order_details.purchaseorderdetailid;
+ALTER SEQUENCE public.purchase_order_details_purchaseorderdetailid_seq OWNED BY public.purchase_order_details.purchase_order_detail_id;
 
 
 --
--- TOC entry 240 (class 1259 OID 21946)
+-- TOC entry 231 (class 1259 OID 22668)
 -- Name: purchase_orders; Type: TABLE; Schema: public; Owner: KC_User
 --
 
 CREATE TABLE public.purchase_orders (
-    purchaseorderid integer NOT NULL,
-    orderdate timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
-    totalcost numeric(10,2) NOT NULL,
-    suppliername character varying(255),
-    contactinfo character varying(255),
+    purchase_order_id integer NOT NULL,
+    order_date timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    total_cost numeric(10,2) NOT NULL,
+    supplier_name character varying(255),
+    contact_info character varying(255),
     kcid character varying(255)
 );
 
@@ -376,7 +374,7 @@ CREATE TABLE public.purchase_orders (
 ALTER TABLE public.purchase_orders OWNER TO "KC_User";
 
 --
--- TOC entry 239 (class 1259 OID 21945)
+-- TOC entry 232 (class 1259 OID 22674)
 -- Name: purchase_orders_purchaseorderid_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -392,33 +390,33 @@ CREATE SEQUENCE public.purchase_orders_purchaseorderid_seq
 ALTER SEQUENCE public.purchase_orders_purchaseorderid_seq OWNER TO "KC_User";
 
 --
--- TOC entry 5005 (class 0 OID 0)
--- Dependencies: 239
+-- TOC entry 5006 (class 0 OID 0)
+-- Dependencies: 232
 -- Name: purchase_orders_purchaseorderid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
-ALTER SEQUENCE public.purchase_orders_purchaseorderid_seq OWNED BY public.purchase_orders.purchaseorderid;
+ALTER SEQUENCE public.purchase_orders_purchaseorderid_seq OWNED BY public.purchase_orders.purchase_order_id;
 
 
 --
--- TOC entry 238 (class 1259 OID 21924)
+-- TOC entry 233 (class 1259 OID 22675)
 -- Name: sales_order_details; Type: TABLE; Schema: public; Owner: KC_User
 --
 
 CREATE TABLE public.sales_order_details (
-    salesorderdetailid integer NOT NULL,
+    sales_order_detail_id integer NOT NULL,
     quantity integer NOT NULL,
     price numeric(10,2) NOT NULL,
-    productid integer,
-    optionid integer,
-    salesorderid integer
+    product_id integer,
+    option_id integer,
+    sales_order_id integer
 );
 
 
 ALTER TABLE public.sales_order_details OWNER TO "KC_User";
 
 --
--- TOC entry 237 (class 1259 OID 21923)
+-- TOC entry 234 (class 1259 OID 22678)
 -- Name: sales_order_details_salesorderdetailid_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -434,24 +432,24 @@ CREATE SEQUENCE public.sales_order_details_salesorderdetailid_seq
 ALTER SEQUENCE public.sales_order_details_salesorderdetailid_seq OWNER TO "KC_User";
 
 --
--- TOC entry 5006 (class 0 OID 0)
--- Dependencies: 237
+-- TOC entry 5007 (class 0 OID 0)
+-- Dependencies: 234
 -- Name: sales_order_details_salesorderdetailid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
-ALTER SEQUENCE public.sales_order_details_salesorderdetailid_seq OWNED BY public.sales_order_details.salesorderdetailid;
+ALTER SEQUENCE public.sales_order_details_salesorderdetailid_seq OWNED BY public.sales_order_details.sales_order_detail_id;
 
 
 --
--- TOC entry 236 (class 1259 OID 21911)
+-- TOC entry 235 (class 1259 OID 22679)
 -- Name: sales_orders; Type: TABLE; Schema: public; Owner: KC_User
 --
 
 CREATE TABLE public.sales_orders (
-    salesorderid integer NOT NULL,
-    totalprice numeric(10,2) NOT NULL,
+    sales_order_id integer NOT NULL,
+    total_price numeric(10,2) NOT NULL,
     status character varying(50) NOT NULL,
-    orderdate timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    order_date timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     kcid character varying(255)
 );
 
@@ -459,7 +457,7 @@ CREATE TABLE public.sales_orders (
 ALTER TABLE public.sales_orders OWNER TO "KC_User";
 
 --
--- TOC entry 235 (class 1259 OID 21910)
+-- TOC entry 236 (class 1259 OID 22683)
 -- Name: sales_orders_salesorderid_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -475,30 +473,30 @@ CREATE SEQUENCE public.sales_orders_salesorderid_seq
 ALTER SEQUENCE public.sales_orders_salesorderid_seq OWNER TO "KC_User";
 
 --
--- TOC entry 5007 (class 0 OID 0)
--- Dependencies: 235
+-- TOC entry 5008 (class 0 OID 0)
+-- Dependencies: 236
 -- Name: sales_orders_salesorderid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
-ALTER SEQUENCE public.sales_orders_salesorderid_seq OWNED BY public.sales_orders.salesorderid;
+ALTER SEQUENCE public.sales_orders_salesorderid_seq OWNED BY public.sales_orders.sales_order_id;
 
 
 --
--- TOC entry 222 (class 1259 OID 21818)
+-- TOC entry 237 (class 1259 OID 22684)
 -- Name: subcategories; Type: TABLE; Schema: public; Owner: KC_User
 --
 
 CREATE TABLE public.subcategories (
-    subcategoryid integer NOT NULL,
+    sub_category_id integer NOT NULL,
     name character varying(255) NOT NULL,
-    categoryid integer
+    category_id integer
 );
 
 
 ALTER TABLE public.subcategories OWNER TO "KC_User";
 
 --
--- TOC entry 221 (class 1259 OID 21817)
+-- TOC entry 238 (class 1259 OID 22687)
 -- Name: subcategories_subcategoryid_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -514,36 +512,36 @@ CREATE SEQUENCE public.subcategories_subcategoryid_seq
 ALTER SEQUENCE public.subcategories_subcategoryid_seq OWNER TO "KC_User";
 
 --
--- TOC entry 5008 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 5009 (class 0 OID 0)
+-- Dependencies: 238
 -- Name: subcategories_subcategoryid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
-ALTER SEQUENCE public.subcategories_subcategoryid_seq OWNED BY public.subcategories.subcategoryid;
+ALTER SEQUENCE public.subcategories_subcategoryid_seq OWNED BY public.subcategories.sub_category_id;
 
 
 --
--- TOC entry 232 (class 1259 OID 21884)
+-- TOC entry 239 (class 1259 OID 22688)
 -- Name: technical_specs; Type: TABLE; Schema: public; Owner: KC_User
 --
 
 CREATE TABLE public.technical_specs (
     id integer NOT NULL,
-    screensize character varying(100),
-    screenresolution character varying(100),
+    screen_size character varying(100),
+    screen_resolution character varying(100),
     processor character varying(255),
     camera character varying(255),
     battery character varying(100),
     connectivity character varying(255),
-    releasedate date,
-    productid integer
+    release_date date,
+    product_id integer
 );
 
 
 ALTER TABLE public.technical_specs OWNER TO "KC_User";
 
 --
--- TOC entry 231 (class 1259 OID 21883)
+-- TOC entry 240 (class 1259 OID 22693)
 -- Name: technical_specs_id_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -559,8 +557,8 @@ CREATE SEQUENCE public.technical_specs_id_seq
 ALTER SEQUENCE public.technical_specs_id_seq OWNER TO "KC_User";
 
 --
--- TOC entry 5009 (class 0 OID 0)
--- Dependencies: 231
+-- TOC entry 5010 (class 0 OID 0)
+-- Dependencies: 240
 -- Name: technical_specs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
@@ -568,7 +566,7 @@ ALTER SEQUENCE public.technical_specs_id_seq OWNED BY public.technical_specs.id;
 
 
 --
--- TOC entry 218 (class 1259 OID 21538)
+-- TOC entry 241 (class 1259 OID 22694)
 -- Name: users; Type: TABLE; Schema: public; Owner: KC_User
 --
 
@@ -586,7 +584,7 @@ CREATE TABLE public.users (
 ALTER TABLE public.users OWNER TO "KC_User";
 
 --
--- TOC entry 217 (class 1259 OID 21537)
+-- TOC entry 242 (class 1259 OID 22699)
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: KC_User
 --
 
@@ -602,8 +600,8 @@ CREATE SEQUENCE public.users_id_seq
 ALTER SEQUENCE public.users_id_seq OWNER TO "KC_User";
 
 --
--- TOC entry 5010 (class 0 OID 0)
--- Dependencies: 217
+-- TOC entry 5011 (class 0 OID 0)
+-- Dependencies: 242
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: KC_User
 --
 
@@ -611,95 +609,95 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- TOC entry 4756 (class 2604 OID 21814)
--- Name: categories categoryid; Type: DEFAULT; Schema: public; Owner: KC_User
+-- TOC entry 4755 (class 2604 OID 22700)
+-- Name: categories category_id; Type: DEFAULT; Schema: public; Owner: KC_User
 --
 
-ALTER TABLE ONLY public.categories ALTER COLUMN categoryid SET DEFAULT nextval('public.categories_categoryid_seq'::regclass);
-
-
---
--- TOC entry 4763 (class 2604 OID 21873)
--- Name: product_images imageid; Type: DEFAULT; Schema: public; Owner: KC_User
---
-
-ALTER TABLE ONLY public.product_images ALTER COLUMN imageid SET DEFAULT nextval('public.product_images_imageid_seq'::regclass);
+ALTER TABLE ONLY public.categories ALTER COLUMN category_id SET DEFAULT nextval('public.categories_categoryid_seq'::regclass);
 
 
 --
--- TOC entry 4765 (class 2604 OID 21901)
--- Name: product_options optionid; Type: DEFAULT; Schema: public; Owner: KC_User
+-- TOC entry 4756 (class 2604 OID 22701)
+-- Name: product_images image_id; Type: DEFAULT; Schema: public; Owner: KC_User
 --
 
-ALTER TABLE ONLY public.product_options ALTER COLUMN optionid SET DEFAULT nextval('public.product_options_optionid_seq'::regclass);
-
-
---
--- TOC entry 4761 (class 2604 OID 21855)
--- Name: products productid; Type: DEFAULT; Schema: public; Owner: KC_User
---
-
-ALTER TABLE ONLY public.products ALTER COLUMN productid SET DEFAULT nextval('public.products_productid_seq'::regclass);
+ALTER TABLE ONLY public.product_images ALTER COLUMN image_id SET DEFAULT nextval('public.product_images_imageid_seq'::regclass);
 
 
 --
--- TOC entry 4758 (class 2604 OID 21833)
--- Name: promotion_details promotiondetailid; Type: DEFAULT; Schema: public; Owner: KC_User
+-- TOC entry 4757 (class 2604 OID 22702)
+-- Name: product_options option_id; Type: DEFAULT; Schema: public; Owner: KC_User
 --
 
-ALTER TABLE ONLY public.promotion_details ALTER COLUMN promotiondetailid SET DEFAULT nextval('public.promotion_details_promotiondetailid_seq'::regclass);
-
-
---
--- TOC entry 4760 (class 2604 OID 21843)
--- Name: promotions promotionid; Type: DEFAULT; Schema: public; Owner: KC_User
---
-
-ALTER TABLE ONLY public.promotions ALTER COLUMN promotionid SET DEFAULT nextval('public.promotions_promotionid_seq'::regclass);
+ALTER TABLE ONLY public.product_options ALTER COLUMN option_id SET DEFAULT nextval('public.product_options_optionid_seq'::regclass);
 
 
 --
--- TOC entry 4772 (class 2604 OID 21964)
--- Name: purchase_order_details purchaseorderdetailid; Type: DEFAULT; Schema: public; Owner: KC_User
+-- TOC entry 4759 (class 2604 OID 22703)
+-- Name: products product_id; Type: DEFAULT; Schema: public; Owner: KC_User
 --
 
-ALTER TABLE ONLY public.purchase_order_details ALTER COLUMN purchaseorderdetailid SET DEFAULT nextval('public.purchase_order_details_purchaseorderdetailid_seq'::regclass);
-
-
---
--- TOC entry 4770 (class 2604 OID 21949)
--- Name: purchase_orders purchaseorderid; Type: DEFAULT; Schema: public; Owner: KC_User
---
-
-ALTER TABLE ONLY public.purchase_orders ALTER COLUMN purchaseorderid SET DEFAULT nextval('public.purchase_orders_purchaseorderid_seq'::regclass);
+ALTER TABLE ONLY public.products ALTER COLUMN product_id SET DEFAULT nextval('public.products_productid_seq'::regclass);
 
 
 --
--- TOC entry 4769 (class 2604 OID 21927)
--- Name: sales_order_details salesorderdetailid; Type: DEFAULT; Schema: public; Owner: KC_User
+-- TOC entry 4761 (class 2604 OID 22704)
+-- Name: promotion_details promotion_detail_id; Type: DEFAULT; Schema: public; Owner: KC_User
 --
 
-ALTER TABLE ONLY public.sales_order_details ALTER COLUMN salesorderdetailid SET DEFAULT nextval('public.sales_order_details_salesorderdetailid_seq'::regclass);
-
-
---
--- TOC entry 4767 (class 2604 OID 21914)
--- Name: sales_orders salesorderid; Type: DEFAULT; Schema: public; Owner: KC_User
---
-
-ALTER TABLE ONLY public.sales_orders ALTER COLUMN salesorderid SET DEFAULT nextval('public.sales_orders_salesorderid_seq'::regclass);
+ALTER TABLE ONLY public.promotion_details ALTER COLUMN promotion_detail_id SET DEFAULT nextval('public.promotion_details_promotiondetailid_seq'::regclass);
 
 
 --
--- TOC entry 4757 (class 2604 OID 21821)
--- Name: subcategories subcategoryid; Type: DEFAULT; Schema: public; Owner: KC_User
+-- TOC entry 4763 (class 2604 OID 22705)
+-- Name: promotions promotion_id; Type: DEFAULT; Schema: public; Owner: KC_User
 --
 
-ALTER TABLE ONLY public.subcategories ALTER COLUMN subcategoryid SET DEFAULT nextval('public.subcategories_subcategoryid_seq'::regclass);
+ALTER TABLE ONLY public.promotions ALTER COLUMN promotion_id SET DEFAULT nextval('public.promotions_promotionid_seq'::regclass);
 
 
 --
--- TOC entry 4764 (class 2604 OID 21887)
+-- TOC entry 4764 (class 2604 OID 22706)
+-- Name: purchase_order_details purchase_order_detail_id; Type: DEFAULT; Schema: public; Owner: KC_User
+--
+
+ALTER TABLE ONLY public.purchase_order_details ALTER COLUMN purchase_order_detail_id SET DEFAULT nextval('public.purchase_order_details_purchaseorderdetailid_seq'::regclass);
+
+
+--
+-- TOC entry 4765 (class 2604 OID 22707)
+-- Name: purchase_orders purchase_order_id; Type: DEFAULT; Schema: public; Owner: KC_User
+--
+
+ALTER TABLE ONLY public.purchase_orders ALTER COLUMN purchase_order_id SET DEFAULT nextval('public.purchase_orders_purchaseorderid_seq'::regclass);
+
+
+--
+-- TOC entry 4767 (class 2604 OID 22708)
+-- Name: sales_order_details sales_order_detail_id; Type: DEFAULT; Schema: public; Owner: KC_User
+--
+
+ALTER TABLE ONLY public.sales_order_details ALTER COLUMN sales_order_detail_id SET DEFAULT nextval('public.sales_order_details_salesorderdetailid_seq'::regclass);
+
+
+--
+-- TOC entry 4768 (class 2604 OID 22709)
+-- Name: sales_orders sales_order_id; Type: DEFAULT; Schema: public; Owner: KC_User
+--
+
+ALTER TABLE ONLY public.sales_orders ALTER COLUMN sales_order_id SET DEFAULT nextval('public.sales_orders_salesorderid_seq'::regclass);
+
+
+--
+-- TOC entry 4770 (class 2604 OID 22710)
+-- Name: subcategories sub_category_id; Type: DEFAULT; Schema: public; Owner: KC_User
+--
+
+ALTER TABLE ONLY public.subcategories ALTER COLUMN sub_category_id SET DEFAULT nextval('public.subcategories_subcategoryid_seq'::regclass);
+
+
+--
+-- TOC entry 4771 (class 2604 OID 22711)
 -- Name: technical_specs id; Type: DEFAULT; Schema: public; Owner: KC_User
 --
 
@@ -707,7 +705,7 @@ ALTER TABLE ONLY public.technical_specs ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
--- TOC entry 4755 (class 2604 OID 21550)
+-- TOC entry 4772 (class 2604 OID 22712)
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: KC_User
 --
 
@@ -715,104 +713,104 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
--- TOC entry 4968 (class 0 OID 21811)
--- Dependencies: 220
+-- TOC entry 4965 (class 0 OID 22633)
+-- Dependencies: 217
 -- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
 
 
 --
--- TOC entry 4978 (class 0 OID 21870)
--- Dependencies: 230
+-- TOC entry 4967 (class 0 OID 22637)
+-- Dependencies: 219
 -- Data for Name: product_images; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
 
 
 --
--- TOC entry 4982 (class 0 OID 21898)
--- Dependencies: 234
+-- TOC entry 4969 (class 0 OID 22643)
+-- Dependencies: 221
 -- Data for Name: product_options; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
 
 
 --
--- TOC entry 4976 (class 0 OID 21852)
--- Dependencies: 228
+-- TOC entry 4971 (class 0 OID 22648)
+-- Dependencies: 223
 -- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
 
 
 --
--- TOC entry 4972 (class 0 OID 21830)
--- Dependencies: 224
+-- TOC entry 4973 (class 0 OID 22653)
+-- Dependencies: 225
 -- Data for Name: promotion_details; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
 
 
 --
--- TOC entry 4974 (class 0 OID 21840)
--- Dependencies: 226
+-- TOC entry 4975 (class 0 OID 22660)
+-- Dependencies: 227
 -- Data for Name: promotions; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
 
 
 --
--- TOC entry 4990 (class 0 OID 21961)
--- Dependencies: 242
+-- TOC entry 4977 (class 0 OID 22664)
+-- Dependencies: 229
 -- Data for Name: purchase_order_details; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
 
 
 --
--- TOC entry 4988 (class 0 OID 21946)
--- Dependencies: 240
+-- TOC entry 4979 (class 0 OID 22668)
+-- Dependencies: 231
 -- Data for Name: purchase_orders; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
 
 
 --
--- TOC entry 4986 (class 0 OID 21924)
--- Dependencies: 238
+-- TOC entry 4981 (class 0 OID 22675)
+-- Dependencies: 233
 -- Data for Name: sales_order_details; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
 
 
 --
--- TOC entry 4984 (class 0 OID 21911)
--- Dependencies: 236
+-- TOC entry 4983 (class 0 OID 22679)
+-- Dependencies: 235
 -- Data for Name: sales_orders; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
 
 
 --
--- TOC entry 4970 (class 0 OID 21818)
--- Dependencies: 222
+-- TOC entry 4985 (class 0 OID 22684)
+-- Dependencies: 237
 -- Data for Name: subcategories; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
 
 
 --
--- TOC entry 4980 (class 0 OID 21884)
--- Dependencies: 232
+-- TOC entry 4987 (class 0 OID 22688)
+-- Dependencies: 239
 -- Data for Name: technical_specs; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
 
 
 --
--- TOC entry 4966 (class 0 OID 21538)
--- Dependencies: 218
+-- TOC entry 4989 (class 0 OID 22694)
+-- Dependencies: 241
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: KC_User
 --
 
@@ -820,8 +818,8 @@ INSERT INTO public.users VALUES (30, 'Nhất', 'Thanh', 'cainhatthanhwork@gmail.
 
 
 --
--- TOC entry 5011 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 5012 (class 0 OID 0)
+-- Dependencies: 218
 -- Name: categories_categoryid_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -829,8 +827,8 @@ SELECT pg_catalog.setval('public.categories_categoryid_seq', 1, false);
 
 
 --
--- TOC entry 5012 (class 0 OID 0)
--- Dependencies: 229
+-- TOC entry 5013 (class 0 OID 0)
+-- Dependencies: 220
 -- Name: product_images_imageid_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -838,8 +836,8 @@ SELECT pg_catalog.setval('public.product_images_imageid_seq', 1, false);
 
 
 --
--- TOC entry 5013 (class 0 OID 0)
--- Dependencies: 233
+-- TOC entry 5014 (class 0 OID 0)
+-- Dependencies: 222
 -- Name: product_options_optionid_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -847,8 +845,8 @@ SELECT pg_catalog.setval('public.product_options_optionid_seq', 1, false);
 
 
 --
--- TOC entry 5014 (class 0 OID 0)
--- Dependencies: 227
+-- TOC entry 5015 (class 0 OID 0)
+-- Dependencies: 224
 -- Name: products_productid_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -856,8 +854,8 @@ SELECT pg_catalog.setval('public.products_productid_seq', 1, false);
 
 
 --
--- TOC entry 5015 (class 0 OID 0)
--- Dependencies: 223
+-- TOC entry 5016 (class 0 OID 0)
+-- Dependencies: 226
 -- Name: promotion_details_promotiondetailid_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -865,8 +863,8 @@ SELECT pg_catalog.setval('public.promotion_details_promotiondetailid_seq', 1, fa
 
 
 --
--- TOC entry 5016 (class 0 OID 0)
--- Dependencies: 225
+-- TOC entry 5017 (class 0 OID 0)
+-- Dependencies: 228
 -- Name: promotions_promotionid_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -874,8 +872,8 @@ SELECT pg_catalog.setval('public.promotions_promotionid_seq', 1, false);
 
 
 --
--- TOC entry 5017 (class 0 OID 0)
--- Dependencies: 241
+-- TOC entry 5018 (class 0 OID 0)
+-- Dependencies: 230
 -- Name: purchase_order_details_purchaseorderdetailid_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -883,8 +881,8 @@ SELECT pg_catalog.setval('public.purchase_order_details_purchaseorderdetailid_se
 
 
 --
--- TOC entry 5018 (class 0 OID 0)
--- Dependencies: 239
+-- TOC entry 5019 (class 0 OID 0)
+-- Dependencies: 232
 -- Name: purchase_orders_purchaseorderid_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -892,8 +890,8 @@ SELECT pg_catalog.setval('public.purchase_orders_purchaseorderid_seq', 1, false)
 
 
 --
--- TOC entry 5019 (class 0 OID 0)
--- Dependencies: 237
+-- TOC entry 5020 (class 0 OID 0)
+-- Dependencies: 234
 -- Name: sales_order_details_salesorderdetailid_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -901,8 +899,8 @@ SELECT pg_catalog.setval('public.sales_order_details_salesorderdetailid_seq', 1,
 
 
 --
--- TOC entry 5020 (class 0 OID 0)
--- Dependencies: 235
+-- TOC entry 5021 (class 0 OID 0)
+-- Dependencies: 236
 -- Name: sales_orders_salesorderid_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -910,8 +908,8 @@ SELECT pg_catalog.setval('public.sales_orders_salesorderid_seq', 1, false);
 
 
 --
--- TOC entry 5021 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 5022 (class 0 OID 0)
+-- Dependencies: 238
 -- Name: subcategories_subcategoryid_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -919,8 +917,8 @@ SELECT pg_catalog.setval('public.subcategories_subcategoryid_seq', 1, false);
 
 
 --
--- TOC entry 5022 (class 0 OID 0)
--- Dependencies: 231
+-- TOC entry 5023 (class 0 OID 0)
+-- Dependencies: 240
 -- Name: technical_specs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -928,8 +926,8 @@ SELECT pg_catalog.setval('public.technical_specs_id_seq', 1, false);
 
 
 --
--- TOC entry 5023 (class 0 OID 0)
--- Dependencies: 217
+-- TOC entry 5024 (class 0 OID 0)
+-- Dependencies: 242
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
@@ -937,106 +935,106 @@ SELECT pg_catalog.setval('public.users_id_seq', 30, true);
 
 
 --
--- TOC entry 4782 (class 2606 OID 21816)
+-- TOC entry 4774 (class 2606 OID 22714)
 -- Name: categories categories_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.categories
-    ADD CONSTRAINT categories_pkey PRIMARY KEY (categoryid);
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (category_id);
 
 
 --
--- TOC entry 4792 (class 2606 OID 21877)
+-- TOC entry 4776 (class 2606 OID 22716)
 -- Name: product_images product_images_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.product_images
-    ADD CONSTRAINT product_images_pkey PRIMARY KEY (imageid);
+    ADD CONSTRAINT product_images_pkey PRIMARY KEY (image_id);
 
 
 --
--- TOC entry 4796 (class 2606 OID 21904)
+-- TOC entry 4778 (class 2606 OID 22718)
 -- Name: product_options product_options_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.product_options
-    ADD CONSTRAINT product_options_pkey PRIMARY KEY (optionid);
+    ADD CONSTRAINT product_options_pkey PRIMARY KEY (option_id);
 
 
 --
--- TOC entry 4790 (class 2606 OID 21858)
+-- TOC entry 4780 (class 2606 OID 22720)
 -- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.products
-    ADD CONSTRAINT products_pkey PRIMARY KEY (productid);
+    ADD CONSTRAINT products_pkey PRIMARY KEY (product_id);
 
 
 --
--- TOC entry 4786 (class 2606 OID 21838)
+-- TOC entry 4782 (class 2606 OID 22722)
 -- Name: promotion_details promotion_details_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.promotion_details
-    ADD CONSTRAINT promotion_details_pkey PRIMARY KEY (promotiondetailid);
+    ADD CONSTRAINT promotion_details_pkey PRIMARY KEY (promotion_detail_id);
 
 
 --
--- TOC entry 4788 (class 2606 OID 21845)
+-- TOC entry 4784 (class 2606 OID 22724)
 -- Name: promotions promotions_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.promotions
-    ADD CONSTRAINT promotions_pkey PRIMARY KEY (promotionid);
+    ADD CONSTRAINT promotions_pkey PRIMARY KEY (promotion_id);
 
 
 --
--- TOC entry 4804 (class 2606 OID 21966)
+-- TOC entry 4786 (class 2606 OID 22726)
 -- Name: purchase_order_details purchase_order_details_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.purchase_order_details
-    ADD CONSTRAINT purchase_order_details_pkey PRIMARY KEY (purchaseorderdetailid);
+    ADD CONSTRAINT purchase_order_details_pkey PRIMARY KEY (purchase_order_detail_id);
 
 
 --
--- TOC entry 4802 (class 2606 OID 21954)
+-- TOC entry 4788 (class 2606 OID 22728)
 -- Name: purchase_orders purchase_orders_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.purchase_orders
-    ADD CONSTRAINT purchase_orders_pkey PRIMARY KEY (purchaseorderid);
+    ADD CONSTRAINT purchase_orders_pkey PRIMARY KEY (purchase_order_id);
 
 
 --
--- TOC entry 4800 (class 2606 OID 21929)
+-- TOC entry 4790 (class 2606 OID 22730)
 -- Name: sales_order_details sales_order_details_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.sales_order_details
-    ADD CONSTRAINT sales_order_details_pkey PRIMARY KEY (salesorderdetailid);
+    ADD CONSTRAINT sales_order_details_pkey PRIMARY KEY (sales_order_detail_id);
 
 
 --
--- TOC entry 4798 (class 2606 OID 21917)
+-- TOC entry 4792 (class 2606 OID 22732)
 -- Name: sales_orders sales_orders_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.sales_orders
-    ADD CONSTRAINT sales_orders_pkey PRIMARY KEY (salesorderid);
+    ADD CONSTRAINT sales_orders_pkey PRIMARY KEY (sales_order_id);
 
 
 --
--- TOC entry 4784 (class 2606 OID 21823)
+-- TOC entry 4794 (class 2606 OID 22734)
 -- Name: subcategories subcategories_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.subcategories
-    ADD CONSTRAINT subcategories_pkey PRIMARY KEY (subcategoryid);
+    ADD CONSTRAINT subcategories_pkey PRIMARY KEY (sub_category_id);
 
 
 --
--- TOC entry 4794 (class 2606 OID 21891)
+-- TOC entry 4796 (class 2606 OID 22736)
 -- Name: technical_specs technical_specs_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
@@ -1045,7 +1043,7 @@ ALTER TABLE ONLY public.technical_specs
 
 
 --
--- TOC entry 4774 (class 2606 OID 21809)
+-- TOC entry 4798 (class 2606 OID 22738)
 -- Name: users unique_kcid; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
@@ -1054,7 +1052,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 4776 (class 2606 OID 21547)
+-- TOC entry 4800 (class 2606 OID 22740)
 -- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
@@ -1063,7 +1061,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 4778 (class 2606 OID 21552)
+-- TOC entry 4802 (class 2606 OID 22742)
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
@@ -1072,7 +1070,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 4780 (class 2606 OID 21549)
+-- TOC entry 4804 (class 2606 OID 22744)
 -- Name: users users_username_key; Type: CONSTRAINT; Schema: public; Owner: KC_User
 --
 
@@ -1081,79 +1079,79 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 4809 (class 2606 OID 21878)
+-- TOC entry 4805 (class 2606 OID 22745)
 -- Name: product_images product_images_productid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.product_images
-    ADD CONSTRAINT product_images_productid_fkey FOREIGN KEY (productid) REFERENCES public.products(productid) ON DELETE CASCADE;
+    ADD CONSTRAINT product_images_productid_fkey FOREIGN KEY (product_id) REFERENCES public.products(product_id) ON DELETE CASCADE;
 
 
 --
--- TOC entry 4811 (class 2606 OID 21905)
+-- TOC entry 4806 (class 2606 OID 22750)
 -- Name: product_options product_options_productid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.product_options
-    ADD CONSTRAINT product_options_productid_fkey FOREIGN KEY (productid) REFERENCES public.products(productid) ON DELETE CASCADE;
+    ADD CONSTRAINT product_options_productid_fkey FOREIGN KEY (product_id) REFERENCES public.products(product_id) ON DELETE CASCADE;
 
 
 --
--- TOC entry 4807 (class 2606 OID 21864)
+-- TOC entry 4807 (class 2606 OID 22755)
 -- Name: products products_promotionid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.products
-    ADD CONSTRAINT products_promotionid_fkey FOREIGN KEY (promotionid) REFERENCES public.promotions(promotionid) ON DELETE SET NULL;
+    ADD CONSTRAINT products_promotionid_fkey FOREIGN KEY (promotion_id) REFERENCES public.promotions(promotion_id) ON DELETE SET NULL;
 
 
 --
--- TOC entry 4808 (class 2606 OID 21859)
+-- TOC entry 4808 (class 2606 OID 22760)
 -- Name: products products_subcategoryid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.products
-    ADD CONSTRAINT products_subcategoryid_fkey FOREIGN KEY (subcategoryid) REFERENCES public.subcategories(subcategoryid) ON DELETE SET NULL;
+    ADD CONSTRAINT products_subcategoryid_fkey FOREIGN KEY (sub_category_id) REFERENCES public.subcategories(sub_category_id) ON DELETE SET NULL;
 
 
 --
--- TOC entry 4806 (class 2606 OID 21846)
+-- TOC entry 4809 (class 2606 OID 22765)
 -- Name: promotions promotions_promotiondetailid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.promotions
-    ADD CONSTRAINT promotions_promotiondetailid_fkey FOREIGN KEY (promotiondetailid) REFERENCES public.promotion_details(promotiondetailid) ON DELETE CASCADE;
+    ADD CONSTRAINT promotions_promotiondetailid_fkey FOREIGN KEY (promotiondetail_id) REFERENCES public.promotion_details(promotion_detail_id) ON DELETE CASCADE;
 
 
 --
--- TOC entry 4817 (class 2606 OID 21972)
+-- TOC entry 4810 (class 2606 OID 22770)
 -- Name: purchase_order_details purchase_order_details_optionid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.purchase_order_details
-    ADD CONSTRAINT purchase_order_details_optionid_fkey FOREIGN KEY (optionid) REFERENCES public.product_options(optionid) ON DELETE CASCADE;
+    ADD CONSTRAINT purchase_order_details_optionid_fkey FOREIGN KEY (option_id) REFERENCES public.product_options(option_id) ON DELETE CASCADE;
 
 
 --
--- TOC entry 4818 (class 2606 OID 21967)
+-- TOC entry 4811 (class 2606 OID 22775)
 -- Name: purchase_order_details purchase_order_details_productid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.purchase_order_details
-    ADD CONSTRAINT purchase_order_details_productid_fkey FOREIGN KEY (productid) REFERENCES public.products(productid) ON DELETE CASCADE;
+    ADD CONSTRAINT purchase_order_details_productid_fkey FOREIGN KEY (product_id) REFERENCES public.products(product_id) ON DELETE CASCADE;
 
 
 --
--- TOC entry 4819 (class 2606 OID 21977)
+-- TOC entry 4812 (class 2606 OID 22780)
 -- Name: purchase_order_details purchase_order_details_purchaseorderid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.purchase_order_details
-    ADD CONSTRAINT purchase_order_details_purchaseorderid_fkey FOREIGN KEY (purchaseorderid) REFERENCES public.purchase_orders(purchaseorderid) ON DELETE CASCADE;
+    ADD CONSTRAINT purchase_order_details_purchaseorderid_fkey FOREIGN KEY (purchase_order_id) REFERENCES public.purchase_orders(purchase_order_id) ON DELETE CASCADE;
 
 
 --
--- TOC entry 4816 (class 2606 OID 21955)
+-- TOC entry 4813 (class 2606 OID 22785)
 -- Name: purchase_orders purchase_orders_kcid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
@@ -1162,34 +1160,34 @@ ALTER TABLE ONLY public.purchase_orders
 
 
 --
--- TOC entry 4813 (class 2606 OID 21935)
+-- TOC entry 4814 (class 2606 OID 22790)
 -- Name: sales_order_details sales_order_details_optionid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.sales_order_details
-    ADD CONSTRAINT sales_order_details_optionid_fkey FOREIGN KEY (optionid) REFERENCES public.product_options(optionid) ON DELETE CASCADE;
+    ADD CONSTRAINT sales_order_details_optionid_fkey FOREIGN KEY (option_id) REFERENCES public.product_options(option_id) ON DELETE CASCADE;
 
 
 --
--- TOC entry 4814 (class 2606 OID 21930)
+-- TOC entry 4815 (class 2606 OID 22795)
 -- Name: sales_order_details sales_order_details_productid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.sales_order_details
-    ADD CONSTRAINT sales_order_details_productid_fkey FOREIGN KEY (productid) REFERENCES public.products(productid) ON DELETE CASCADE;
+    ADD CONSTRAINT sales_order_details_productid_fkey FOREIGN KEY (product_id) REFERENCES public.products(product_id) ON DELETE CASCADE;
 
 
 --
--- TOC entry 4815 (class 2606 OID 21940)
+-- TOC entry 4816 (class 2606 OID 22800)
 -- Name: sales_order_details sales_order_details_salesorderid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.sales_order_details
-    ADD CONSTRAINT sales_order_details_salesorderid_fkey FOREIGN KEY (salesorderid) REFERENCES public.sales_orders(salesorderid) ON DELETE CASCADE;
+    ADD CONSTRAINT sales_order_details_salesorderid_fkey FOREIGN KEY (sales_order_id) REFERENCES public.sales_orders(sales_order_id) ON DELETE CASCADE;
 
 
 --
--- TOC entry 4812 (class 2606 OID 21918)
+-- TOC entry 4817 (class 2606 OID 22805)
 -- Name: sales_orders sales_orders_kcid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
@@ -1198,24 +1196,33 @@ ALTER TABLE ONLY public.sales_orders
 
 
 --
--- TOC entry 4805 (class 2606 OID 21824)
+-- TOC entry 4818 (class 2606 OID 22810)
 -- Name: subcategories subcategories_categoryid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.subcategories
-    ADD CONSTRAINT subcategories_categoryid_fkey FOREIGN KEY (categoryid) REFERENCES public.categories(categoryid) ON DELETE CASCADE;
+    ADD CONSTRAINT subcategories_categoryid_fkey FOREIGN KEY (category_id) REFERENCES public.categories(category_id) ON DELETE CASCADE;
 
 
 --
--- TOC entry 4810 (class 2606 OID 21892)
+-- TOC entry 4819 (class 2606 OID 22815)
 -- Name: technical_specs technical_specs_productid_fkey; Type: FK CONSTRAINT; Schema: public; Owner: KC_User
 --
 
 ALTER TABLE ONLY public.technical_specs
-    ADD CONSTRAINT technical_specs_productid_fkey FOREIGN KEY (productid) REFERENCES public.products(productid) ON DELETE CASCADE;
+    ADD CONSTRAINT technical_specs_productid_fkey FOREIGN KEY (product_id) REFERENCES public.products(product_id) ON DELETE CASCADE;
 
 
--- Completed on 2025-01-27 11:11:24
+--
+-- TOC entry 4998 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: pg_database_owner
+--
+
+REVOKE USAGE ON SCHEMA public FROM PUBLIC;
+
+
+-- Completed on 2025-01-28 18:48:23
 
 --
 -- PostgreSQL database dump complete
