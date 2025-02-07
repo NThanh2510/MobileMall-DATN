@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Store</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+    <script defer src="/js/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<div th:fragment="header">
+<body>
+
+    <div class="top-header">
+        <span>Flexible Delivery, Fast Delivery.</span>
+        <div class="contact-info">
+            <span>+039.9999.999</span> | 
+            <span>nhom mac ec </span>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="logo">
+            <img src="/images/logo.png" alt="MobileStore Logo">
+        
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="SEARCH HERE">
+            <button><i class="fa fa-search"></i></button>
+        </div>
+        <div class="user-actions">
+            <a th:href="@{/login}">TÀI KHOẢN</a> | 
+            <a th:href="@{/register}">ĐĂNG KÝ</a>
+            <a th:href="@{/cart}">            <i class="fa fa-shopping-cart"></i>
+            </a>
+            <span class="cart-badge">1</span>
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <ul>
+            <li><a th:href="@{/home}">TRANG CHỦ</a></li>
+            <li><a href="#">DOANH MỤC</a></li>
+            <li><a th:href="@{/about}">THÔNG TIN</a></li>
+            <li><a href="#">BÀI VIẾT</a></li>
+            <li><a th:href="@{/view}">LIÊN HỆ, HỖ TRỢ</a></li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

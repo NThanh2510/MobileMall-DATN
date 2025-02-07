@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+  
+<!-- Header -->
+	<div th:replace="header :: header"></div>
+
+
+<!-- Contact Form Section -->
+<main class="container mx-auto py-12">
+  <h2 class="text-3xl font-bold text-center mb-8">Liên Hệ</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Contact Information -->
+    <div class="bg-white p-8 rounded-xl shadow-md">
+      <h3 class="text-xl font-bold mb-4">Thông Tin Liên Hệ</h3>
+      <p class="text-gray-700 mb-2">📍 Address: Phần Mềm Quang Trung</p>
+      <p class="text-gray-700 mb-2">📧 Email: MoblieTech@gmail.com</p>
+      <p class="text-gray-700">📞 Phone: +039 999 9999</p>
+    </div>
+
+    <!-- Contact Form -->
+    <form class="bg-white p-8 rounded-xl shadow-md">
+      <div class="mb-4">
+        <label for="name" class="block text-gray-700 font-medium">Your Name</label>
+        <input type="text" id="name" name="name" class="w-full p-2 border border-gray-300 rounded-md" required>
+      </div>
+
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700 font-medium">Your Email</label>
+        <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded-md" required>
+      </div>
+
+      <div class="mb-4">
+        <label for="message" class="block text-gray-700 font-medium">Your Message</label>
+        <textarea id="message" name="message" rows="4" class="w-full p-2 border border-gray-300 rounded-md" required></textarea>
+      </div>
+
+      <button type="submit" class="bg-red-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">
+        Send Message
+      </button>
+    </form>
+  </div>
+</main>
+
+	<div th:replace="footer :: footer"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MobileStore | Trang thông tin</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+  <header th:replace="header :: header"></header>
+
+  <!-- Page Header -->
+  <section class="bg-light py-3">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+        <li class="breadcrumb-item active">Thông tin</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Welcome Section -->
+  <section class="py-5">
+    <div class="container text-center">
+      <h2 class="text-primary">Chào mừng đến với MobileStore</h2>
+      <p class="lead mt-3">MobileStore là trang web bán điện thoại trực tuyến, cung cấp trải nghiệm mua sắm thuận tiện cho khách hàng với đầy đủ các sản phẩm di động phù hợp mọi nhu cầu.</p>
+    </div>
+  </section>
+
+  <!-- Counters Section -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <div class="card shadow-sm p-4">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7hC6CAuWFNLqsuhQX-koZVfKGS0XUGPePwQ&s" alt="Sản phẩm" class="mb-3" style="width: 60px;">
+            <h3>1,000,000+</h3>
+            <p>Sản phẩm</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm p-4">
+            <img src="https://media.vietnamplus.vn/images/7255a701687d11cb8c6bbc58a6c807854ab2e9aff8441751ee2d6e867d2ba5472336eddab24e01c96c56fee1197d3637f2da78aa12098f98dc1ba35d4a0e11ef/Covid19_6.JPG" alt="Khách hàng" class="mb-3" style="width: 60px;">
+            <h3>80,000+</h3>
+            <p>Khách hàng</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm p-4">
+            <img src="images/location_icon.png" alt="Chi nhánh" class="mb-3" style="width: 60px;">
+            <h3>100+</h3>
+            <p>Chi nhánh</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <div class="card shadow-sm p-4">
+            <h3>Nhiệm vụ</h3>
+            <p>Mang đến sự dễ dàng và thuận tiện khi khách hàng mua sản phẩm.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm p-4">
+            <h3>Tầm nhìn</h3>
+            <p>Mở rộng chuỗi cửa hàng ra cả nước, phục vụ cho tất cả các khách hàng.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm p-4">
+            <h3>Giá cả</h3>
+            <p>Giá cả phù hợp với từng sản phẩm. Ngoài ra, chúng tôi còn có dịch vụ giảm giá và miễn phí vận chuyển.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <h2 class="text-center text-primary mb-4">Thời gian phát triển MobileStore</h2>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card p-3">
+            <h5>2010 - 2012</h5>
+            <p>Xây dựng ý tưởng mở công ty MobileStore. Tìm kiếm nguồn vốn, nguồn nhân lực, quản lý...</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card p-3">
+            <h5>2013 - 2014</h5>
+            <p>Công ty MobileStore được thành lập, tiếp tục khó khăn trong việc tìm kiếm khách hàng.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card p-3">
+            <h5>2014 - 2015</h5>
+            <p>Công ty đi vào thời kỳ ổn định.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card p-3">
+            <h5>2017 - 2018</h5>
+            <p>MobileStore phát triển mạnh, mở thêm nhiều chi nhánh và trang web để phục vụ khách hàng.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center text-primary mb-4">Bình luận nổi bật của khách hàng</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card shadow-sm p-4">
+            <p>“Tôi thật sự thích công ty này, họ luôn mang đến cho tôi sự thuận tiện khi tôi mua sản phẩm.”</p>
+            <h5>Henry Odom</h5>
+            <small>Ahemedabad</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm p-4">
+            <p>“Công ty có đội ngũ phục vụ rất tốt. Họ tư vấn tận tình khi tôi gặp khó khăn.”</p>
+            <h5>George Walker</h5>
+            <small>Baroda</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm p-4">
+            <p>“Công ty có nhiều loại sản phẩm khác nhau. Giá cả rất phù hợp.”</p>
+            <h5>Henry Odom</h5>
+            <small>Ahemedabad</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+	<div th:replace="footer :: footer"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
