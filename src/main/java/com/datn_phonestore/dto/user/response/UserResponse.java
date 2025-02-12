@@ -1,0 +1,24 @@
+package com.datn_phonestore.dto.user.response;
+
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class UserResponse {
+
+    Long id;
+    String username;
+    String firstName;
+    String lastName;
+    String email;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    LocalDate dob;
+}
+
