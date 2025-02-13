@@ -48,6 +48,32 @@ public class TechnicalSpec {
     @Column(name = "os")
     private Integer osId; // Chỉ lưu trữ ID của `OS`
 
-    @Column(name = "connectivity")
-    private Integer connectivityId; // Chỉ lưu trữ ID của `Connectivity`
+    @Column(name = "design")
+    private String design; // Chỉ lưu trữ ID của `Connectivity`
+
+    @Column(name = "material")
+    private String material;
+
+    @Column(name = "weight")
+    private double weight;
+
+    @Column(name = "battery_type")
+    private String batteryType;
+
+    @Column(name = "network")
+    private String network;
+
+    @Column(name = "sim")
+    private String sim;
+
+    @Column(name = "wifi")
+    private String wifi;
+
+    @Column(name = "gps")
+    private String gps;
+
+    @Column(name = "nfc")
+    private Boolean nfc;
+
+    
 }
