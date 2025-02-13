@@ -5,7 +5,7 @@
 -- Dumped from database version 17.2
 -- Dumped by pg_dump version 17.2
 
--- Started on 2025-02-13 10:14:49
+-- Started on 2025-02-13 11:10:26
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -592,7 +592,8 @@ CREATE TABLE public.voucher (
     start_date date NOT NULL,
     end_date date NOT NULL,
     status boolean DEFAULT true,
-    product_id integer
+    product_id integer,
+    kcid character varying NOT NULL
 );
 
 
@@ -848,7 +849,8 @@ INSERT INTO public.users VALUES (45, 'Thanh', 'Thanh', 'cainha1tthan3h1wo1r11k@g
 -- Data for Name: voucher; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.voucher VALUES (2, 'Tết 2025', 'Giảm tiền', 200000.00, NULL, '2025-12-02', '2026-05-02', true, 1);
+INSERT INTO public.voucher VALUES (2, 'Tết 2025', 'Giảm tiền', 200000.00, NULL, '2025-12-02', '2026-05-02', true, 1, 'f:3e8799f9-28c2-4cda-8d97-ba2c7e734ca7:30');
+INSERT INTO public.voucher VALUES (4, 'Hề', 'Giảm tiền', 150000.00, NULL, '2025-01-02', '2026-02-04', false, 2, 'f:3e8799f9-28c2-4cda-8d97-ba2c7e734ca7:30');
 
 
 --
@@ -965,7 +967,7 @@ SELECT pg_catalog.setval('public.users_id_seq', 49, true);
 -- Name: voucher_voucher_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.voucher_voucher_id_seq', 2, true);
+SELECT pg_catalog.setval('public.voucher_voucher_id_seq', 4, true);
 
 
 --
@@ -1256,7 +1258,7 @@ ALTER TABLE ONLY public.voucher
 REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 
 
--- Completed on 2025-02-13 10:14:49
+-- Completed on 2025-02-13 11:10:26
 
 --
 -- PostgreSQL database dump complete
