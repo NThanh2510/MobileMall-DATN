@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,12 +11,12 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "promotion_details")
-public class PromotionDetail {
+@Table(name = "voucher")
+public class Voucher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "promotion_detail_id")
-    Long promotionDetailId;
+    @Column(name = "voucher_id")
+    Long voucherId;
     @Column(name = "name")
     String name;
     @Column(name = "discount_type")
@@ -32,5 +31,7 @@ public class PromotionDetail {
     Date endDate;
     @Column(name = "status")
     Boolean status;
+    @Column(name = "product_id")
+    Long productId;
 
 }

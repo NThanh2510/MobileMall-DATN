@@ -5,7 +5,7 @@
 -- Dumped from database version 17.2
 -- Dumped by pg_dump version 17.2
 
--- Started on 2025-02-13 09:32:24
+-- Started on 2025-02-13 09:38:06
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1328,7 +1328,7 @@ ALTER TABLE ONLY public.technical_specs
 REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 
 
--- Completed on 2025-02-13 09:32:24
+-- Completed on 2025-02-13 09:38:07
 
 --
 -- PostgreSQL database dump complete
