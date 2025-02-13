@@ -5,7 +5,7 @@
 -- Dumped from database version 17.2
 -- Dumped by pg_dump version 17.2
 
--- Started on 2025-02-13 11:10:26
+-- Started on 2025-02-13 13:21:08
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -73,8 +73,8 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public.categories (
-    category_id integer NOT NULL,
-    name character varying(255) NOT NULL
+                                   category_id integer NOT NULL,
+                                   name character varying(255) NOT NULL
 );
 
 
@@ -111,8 +111,8 @@ ALTER SEQUENCE public.categories_category_id_seq OWNED BY public.categories.cate
 --
 
 CREATE TABLE public.os (
-    id integer NOT NULL,
-    name character varying(255) NOT NULL
+                           id integer NOT NULL,
+                           name character varying(255) NOT NULL
 );
 
 
@@ -149,9 +149,9 @@ ALTER SEQUENCE public.os_id_seq OWNED BY public.os.id;
 --
 
 CREATE TABLE public.product_images (
-    image_id integer NOT NULL,
-    image_path text NOT NULL,
-    product_id integer NOT NULL
+                                       image_id integer NOT NULL,
+                                       image_path text NOT NULL,
+                                       product_id integer NOT NULL
 );
 
 
@@ -188,14 +188,14 @@ ALTER SEQUENCE public.product_images_image_id_seq OWNED BY public.product_images
 --
 
 CREATE TABLE public.product_options (
-    option_id integer NOT NULL,
-    color character varying(50),
-    color_price_adjustment numeric(10,2),
-    storage_ram character varying(50),
-    storage_price_adjustment numeric(10,2),
-    quantity integer,
-    final_price numeric(10,2),
-    product_id integer NOT NULL
+                                        option_id integer NOT NULL,
+                                        color character varying(50),
+                                        color_price_adjustment numeric(10,2),
+                                        storage_ram character varying(50),
+                                        storage_price_adjustment numeric(10,2),
+                                        quantity integer,
+                                        final_price numeric(10,2),
+                                        product_id integer NOT NULL
 );
 
 
@@ -232,13 +232,13 @@ ALTER SEQUENCE public.product_options_option_id_seq OWNED BY public.product_opti
 --
 
 CREATE TABLE public.products (
-    product_id integer NOT NULL,
-    name character varying(255) NOT NULL,
-    base_price numeric(10,2) NOT NULL,
-    main_image text,
-    created_date date DEFAULT CURRENT_DATE,
-    warranty integer,
-    sub_category_id integer NOT NULL
+                                 product_id integer NOT NULL,
+                                 name character varying(255) NOT NULL,
+                                 base_price numeric(10,2) NOT NULL,
+                                 main_image text,
+                                 created_date date DEFAULT CURRENT_DATE,
+                                 warranty integer,
+                                 sub_category_id integer NOT NULL
 );
 
 
@@ -275,13 +275,13 @@ ALTER SEQUENCE public.products_product_id_seq OWNED BY public.products.product_i
 --
 
 CREATE TABLE public.purchase_order_details (
-    purchase_order_detail_id integer NOT NULL,
-    quantity integer NOT NULL,
-    unit_cost numeric(10,2),
-    sub_total numeric(10,2),
-    product_id integer NOT NULL,
-    option_id integer,
-    purchase_order_id integer NOT NULL
+                                               purchase_order_detail_id integer NOT NULL,
+                                               quantity integer NOT NULL,
+                                               unit_cost numeric(10,2),
+                                               sub_total numeric(10,2),
+                                               product_id integer NOT NULL,
+                                               option_id integer,
+                                               purchase_order_id integer NOT NULL
 );
 
 
@@ -318,13 +318,13 @@ ALTER SEQUENCE public.purchase_order_details_purchase_order_detail_id_seq OWNED 
 --
 
 CREATE TABLE public.purchase_orders (
-    purchase_order_id integer NOT NULL,
-    order_date date NOT NULL,
-    total_cost numeric(10,2),
-    supplier_name character varying(255),
-    contact_info character varying(255),
-    address text,
-    kcid character varying(255)
+                                        purchase_order_id integer NOT NULL,
+                                        order_date date NOT NULL,
+                                        total_cost numeric(10,2),
+                                        supplier_name character varying(255),
+                                        contact_info character varying(255),
+                                        address text,
+                                        kcid character varying(255)
 );
 
 
@@ -361,13 +361,13 @@ ALTER SEQUENCE public.purchase_orders_purchase_order_id_seq OWNED BY public.purc
 --
 
 CREATE TABLE public.sales_order_details (
-    sales_order_detail_id integer NOT NULL,
-    quantity integer NOT NULL,
-    price numeric(10,2),
-    sub_price numeric(10,2),
-    product_id integer NOT NULL,
-    option_id integer,
-    sales_order_id integer NOT NULL
+                                            sales_order_detail_id integer NOT NULL,
+                                            quantity integer NOT NULL,
+                                            price numeric(10,2),
+                                            sub_price numeric(10,2),
+                                            product_id integer NOT NULL,
+                                            option_id integer,
+                                            sales_order_id integer NOT NULL
 );
 
 
@@ -404,11 +404,11 @@ ALTER SEQUENCE public.sales_order_details_sales_order_detail_id_seq OWNED BY pub
 --
 
 CREATE TABLE public.sales_orders (
-    sales_order_id integer NOT NULL,
-    total_price numeric(10,2),
-    status character varying(50),
-    order_date date DEFAULT CURRENT_DATE,
-    kcid character varying(255)
+                                     sales_order_id integer NOT NULL,
+                                     total_price numeric(10,2),
+                                     status character varying(50),
+                                     order_date date DEFAULT CURRENT_DATE,
+                                     kcid character varying(255)
 );
 
 
@@ -445,9 +445,9 @@ ALTER SEQUENCE public.sales_orders_sales_order_id_seq OWNED BY public.sales_orde
 --
 
 CREATE TABLE public.subcategories (
-    sub_category_id integer NOT NULL,
-    name character varying(255) NOT NULL,
-    category_id integer NOT NULL
+                                      sub_category_id integer NOT NULL,
+                                      name character varying(255) NOT NULL,
+                                      category_id integer NOT NULL
 );
 
 
@@ -484,27 +484,27 @@ ALTER SEQUENCE public.subcategories_sub_category_id_seq OWNED BY public.subcateg
 --
 
 CREATE TABLE public.technical_specs (
-    technical_specs_id integer NOT NULL,
-    screen_size character varying(50),
-    screen_resolution character varying(100),
-    processor character varying(100),
-    rear_camera character varying(100),
-    front_camera character varying(100),
-    battery character varying(100),
-    fast_charging boolean,
-    water_resistance boolean,
-    release_date date,
-    product_id integer NOT NULL,
-    os integer,
-    design character varying,
-    material character varying,
-    weight real,
-    battery_type character varying,
-    network character varying,
-    sim character varying,
-    wifi character varying,
-    gps character varying,
-    nfc boolean
+                                        technical_specs_id integer NOT NULL,
+                                        screen_size character varying(50),
+                                        screen_resolution character varying(100),
+                                        processor character varying(100),
+                                        rear_camera character varying(100),
+                                        front_camera character varying(100),
+                                        battery character varying(100),
+                                        fast_charging boolean,
+                                        water_resistance boolean,
+                                        release_date date,
+                                        product_id integer NOT NULL,
+                                        os integer,
+                                        design character varying,
+                                        material character varying,
+                                        weight real,
+                                        battery_type character varying,
+                                        network character varying,
+                                        sim character varying,
+                                        wifi character varying,
+                                        gps character varying,
+                                        nfc boolean
 );
 
 
@@ -541,13 +541,13 @@ ALTER SEQUENCE public.technical_specs_technical_specs_id_seq OWNED BY public.tec
 --
 
 CREATE TABLE public.users (
-    id bigint NOT NULL,
-    firstname character varying(50) NOT NULL,
-    lastname character varying(50) NOT NULL,
-    email character varying(100) NOT NULL,
-    username character varying(50) NOT NULL,
-    password character varying(255) NOT NULL,
-    kcid character varying(255)
+                              id bigint NOT NULL,
+                              firstname character varying(50) NOT NULL,
+                              lastname character varying(50) NOT NULL,
+                              email character varying(100) NOT NULL,
+                              username character varying(50) NOT NULL,
+                              password character varying(255) NOT NULL,
+                              kcid character varying(255)
 );
 
 
@@ -584,16 +584,16 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 --
 
 CREATE TABLE public.voucher (
-    voucher_id integer NOT NULL,
-    name character varying(255) NOT NULL,
-    discount_type character varying(50) NOT NULL,
-    discount_value numeric(10,2) NOT NULL,
-    gift character varying(255),
-    start_date date NOT NULL,
-    end_date date NOT NULL,
-    status boolean DEFAULT true,
-    product_id integer,
-    kcid character varying NOT NULL
+                                voucher_id integer NOT NULL,
+                                name character varying(255) NOT NULL,
+                                discount_type character varying(50) NOT NULL,
+                                discount_value numeric(10,2) NOT NULL,
+                                gift character varying(255),
+                                start_date date NOT NULL,
+                                end_date date NOT NULL,
+                                status boolean DEFAULT true,
+                                product_id integer,
+                                kcid character varying
 );
 
 
@@ -839,8 +839,7 @@ INSERT INTO public.subcategories VALUES (2, 'iPhone 16', 1);
 --
 
 INSERT INTO public.users VALUES (30, 'Nhất', 'Thanh', 'cainhatthanhwork@gmail.com', 'admin', '$2a$10$m0jPDxk5pgWHA5QavynBl.QWwSzr9haN1/lVN/qeCJtX/3yUuOUXq', 'f:3e8799f9-28c2-4cda-8d97-ba2c7e734ca7:30');
-INSERT INTO public.users VALUES (49, 'Thanh', 'Thanh', 'cainha11ttha1n3h1wo1r11k@gmail.com', 'thanh111', '$2a$10$CeN8.QW8TDtgC95HtIg/2.VXRdLpcKKQoGxPzWuMdeSj6cxiuxfui', 'f:3e8799f9-28c2-4cda-8d97-ba2c7e734ca7:49');
-INSERT INTO public.users VALUES (45, 'Thanh', 'Thanh', 'cainha1tthan3h1wo1r11k@gmail.com', 'thanh1', '$2a$10$9dBK7/xKO8Jl5q0.C7Aaze2hrzOiMwTp7IhWse9.ysP2zn.r5Kqee', 'f:3e8799f9-28c2-4cda-8d97-ba2c7e734ca7:45');
+INSERT INTO public.users VALUES (50, 'Thanh', 'Thanh', 'thanhcn@co.com', 'thanhcn2020', '$2a$10$UAZND8Bn3t8la5jptHdpQO8nJCCgka2cijf35jzsAsTJoInCdlkx.', 'f:3e8799f9-28c2-4cda-8d97-ba2c7e734ca7:50');
 
 
 --
@@ -849,8 +848,8 @@ INSERT INTO public.users VALUES (45, 'Thanh', 'Thanh', 'cainha1tthan3h1wo1r11k@g
 -- Data for Name: voucher; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.voucher VALUES (2, 'Tết 2025', 'Giảm tiền', 200000.00, NULL, '2025-12-02', '2026-05-02', true, 1, 'f:3e8799f9-28c2-4cda-8d97-ba2c7e734ca7:30');
-INSERT INTO public.voucher VALUES (4, 'Hề', 'Giảm tiền', 150000.00, NULL, '2025-01-02', '2026-02-04', false, 2, 'f:3e8799f9-28c2-4cda-8d97-ba2c7e734ca7:30');
+INSERT INTO public.voucher VALUES (10, 'Hè 1', 'giảm tiền', 100000.00, 'Tai nghe', '2025-02-02', '2025-03-04', true, NULL, 'f:db48927c-2cf8-4f23-a16a-569b17069134:50');
+INSERT INTO public.voucher VALUES (11, 'Hè 1', 'giảm tiền', 100000.00, 'Tai nghe', '2025-02-02', '2025-03-04', true, 1, 'f:db48927c-2cf8-4f23-a16a-569b17069134:50');
 
 
 --
@@ -958,7 +957,7 @@ SELECT pg_catalog.setval('public.technical_specs_technical_specs_id_seq', 1, fal
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: KC_User
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 49, true);
+SELECT pg_catalog.setval('public.users_id_seq', 50, true);
 
 
 --
@@ -967,7 +966,7 @@ SELECT pg_catalog.setval('public.users_id_seq', 49, true);
 -- Name: voucher_voucher_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.voucher_voucher_id_seq', 4, true);
+SELECT pg_catalog.setval('public.voucher_voucher_id_seq', 11, true);
 
 
 --
@@ -1258,7 +1257,7 @@ ALTER TABLE ONLY public.voucher
 REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 
 
--- Completed on 2025-02-13 11:10:26
+-- Completed on 2025-02-13 13:21:08
 
 --
 -- PostgreSQL database dump complete
