@@ -60,12 +60,16 @@ public class GlobalExceptionHandler {
         Map<String, Object> attributes = null;
         try {
             errorCode = ErrorCode.valueOf(enumKey);
+            var constraintViolation = exception.getBindingResult()
+                    .getAllErrors()
+                    .stream()
+                    .findFirst()
+                    .map(error -> ((ConstraintViolation<Object>) error.unwrap(ConstraintViolation.class)))
+                    .orElse(null);
 
-            var constraintViolation =
-                    exception.getBindingResult().getAllErrors().getFirst().unwrap(ConstraintViolation.class);
-
-            attributes = constraintViolation.getConstraintDescriptor().getAttributes();
-
+            if (constraintViolation != null) {
+                attributes = constraintViolation.getConstraintDescriptor().getAttributes();
+            }
             log.info(attributes.toString());
 
         } catch (IllegalArgumentException e) {
