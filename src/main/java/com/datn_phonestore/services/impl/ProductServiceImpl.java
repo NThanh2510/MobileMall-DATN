@@ -1,9 +1,13 @@
 package com.datn_phonestore.services.impl;
 
+import com.datn_phonestore.dto.admin.products.option.request.OptionRequest;
 import com.datn_phonestore.dto.admin.products.request.CreateProductRequest;
+import com.datn_phonestore.dto.admin.products.response.OptionResponse;
 import com.datn_phonestore.dto.admin.products.response.ProductResponseInfo;
 import com.datn_phonestore.entity.Product;
+import com.datn_phonestore.entity.ProductOption;
 import com.datn_phonestore.entity.TechnicalSpec;
+import com.datn_phonestore.reponsitory.ProductOptionRepository;
 import com.datn_phonestore.reponsitory.ProductRepository;
 import com.datn_phonestore.reponsitory.TechnicalSpecRepository;
 import com.datn_phonestore.services.ProductService;
@@ -13,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -23,6 +26,8 @@ public class ProductServiceImpl implements ProductService {
      ProductRepository productRepository;
     @Autowired
     TechnicalSpecRepository technicalSpecRepository;
+    @Autowired
+    ProductOptionRepository productOptionRepository;
 
     @Override
     public ProductResponseInfo create(CreateProductRequest request) {
@@ -66,5 +71,20 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllProduct() {
     var products = productRepository.findAll();
     return  products;
+    }
+
+    @Override
+    public OptionResponse createOptionProduct(OptionRequest request) {
+        ProductOption option = new ProductOption();
+        option.setColor(request.getColor());
+        option.setColorPriceAdjustment(request.getColorPriceAdjustment());
+        option.setStorageRam(request.getStorageRam());
+        option.setStoragePriceAdjustment(request.getStorageRamPriceAdjustment());
+        option.setQuantity(request.getQuantity());
+        option.setFinalPrice(request.getFinalPrice());
+        option.setProductId(request.getProductId());
+        productOptionRepository.save(option);
+
+        return null;
     }
 }

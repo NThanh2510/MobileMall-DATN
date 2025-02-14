@@ -10,9 +10,9 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UpdateUserRequest {
 
-    private String firstName;
-    private String lastName;
-    private String email;
+     String firstName;
+     String lastName;
+     String email;
 //    private boolean enabled;
 }
 

@@ -42,7 +42,6 @@ public class OrderController {
     public ApiResponse<List<SaleOrderDetailResponse>> orderDetail(@PathVariable Long id) {
         return ApiResponse.<List<SaleOrderDetailResponse>>builder()
                 .result(salesOrderService.getOderDetailById(id))
-
                 .message("success")
                 .build();
     }

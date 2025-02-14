@@ -10,8 +10,8 @@ import java.math.BigDecimal;
 
 @Entity
 @Getter
-@Setter
-@AllArgsConstructor
+
+
 @NoArgsConstructor
 @Table(name = "product_options")
 public class ProductOption {
@@ -32,5 +32,46 @@ public class ProductOption {
     @Column(name = "product_id")
     Long productId;
 
+    public ProductOption(Long optionId, String color, BigDecimal colorPriceAdjustment, String storageRam, BigDecimal storagePriceAdjustment, Integer quantity,Long productId) {
+        this.optionId = optionId;
+        this.color = color;
+        this.colorPriceAdjustment = colorPriceAdjustment;
+        this.storageRam = storageRam;
+        this.storagePriceAdjustment = storagePriceAdjustment;
+        this.quantity = quantity;
+        this.finalPrice = colorPriceAdjustment.add(storagePriceAdjustment);
+        this.productId = productId;
+    }
 
+    public void setOptionId(Long optionId) {
+        this.optionId = optionId;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setColorPriceAdjustment(BigDecimal colorPriceAdjustment) {
+        this.colorPriceAdjustment = colorPriceAdjustment;
+    }
+
+    public void setStorageRam(String storageRam) {
+        this.storageRam = storageRam;
+    }
+
+    public void setStoragePriceAdjustment(BigDecimal storagePriceAdjustment) {
+        this.storagePriceAdjustment = storagePriceAdjustment;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setFinalPrice(BigDecimal finalPrice) {
+        this.finalPrice = colorPriceAdjustment.add(storagePriceAdjustment);
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
 }
