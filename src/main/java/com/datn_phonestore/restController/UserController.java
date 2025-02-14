@@ -26,6 +26,7 @@ public class UserController {
     ApiResponse<UserResponse> register(@RequestBody @Valid RegistrationRequest request) {
         return ApiResponse.<UserResponse>builder()
                 .result(userService.register(request))
+                .message("Vui lòng xác nhận email")
                 .build();
     }
 

@@ -1,5 +1,6 @@
 package com.datn_phonestore.services.impl;
 
+import com.datn_phonestore.dto.user.identity.TokenExchangeParam;
 import com.datn_phonestore.dto.user.identity.TokenLoginExchangeParam;
 import com.datn_phonestore.dto.user.request.LoginRequest;
 import com.datn_phonestore.dto.user.request.RegistrationRequest;
@@ -73,6 +74,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse register(RegistrationRequest request) {
+
+        var token = identityClient.exchangeToken(TokenExchangeParam.builder()
+                .grant_type("client_credentials")
+                .client_id(clientId)
+                .client_secret(clientSecret)
+                .scope("openid")
+                .build());
+        log.info("Token: {}", token);
+
+
+
         userRepository.findByEmail(request.getEmail())
                 .ifPresent(user -> {
                     throw new AppException(ErrorCode.EMAIL_EXISTED);
@@ -93,11 +105,13 @@ public class UserServiceImpl implements UserService {
         log.info("đã save user");
 
         //Gán giá trị kcid
-        String kcid = "f:3e8799f9-28c2-4cda-8d97-ba2c7e734ca7:" + newUser.getId();
+        String kcid = "f:db48927c-2cf8-4f23-a16a-569b17069134:" + newUser.getId();
         log.info(passwordEncoder.encode(newUser.getPassword()));
         newUser.setKcid(kcid);
         newUser = userRepository.save(newUser);
 //        log.info("kcUserId đã được cập nhật cho User: {}", newUser);
+
+         identityClient.sendmail("Bearer "+ token.getAccessToken(),kcid );
         return null;
     }
 

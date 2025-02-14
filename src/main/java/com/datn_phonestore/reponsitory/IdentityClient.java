@@ -37,4 +37,9 @@ public interface IdentityClient {
     List<KeycloakUser> searchUser(
             @RequestHeader("Authorization") String bearerToken,
             @RequestParam("search") String username);
+
+    @PutMapping("/admin/realms/keycloak_demo/users/{id}/send-verify-email")
+    void sendmail(@RequestHeader("Authorization")String token,
+                    @PathVariable("id") String userId);
+
 }
