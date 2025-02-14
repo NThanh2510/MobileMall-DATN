@@ -32,7 +32,7 @@ public class UserController {
 //    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/user/list")
     ApiResponse<List<UserResponse>> getAllProfiles() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return ApiResponse.<List<UserResponse>>builder()
                 .result(userService.getAllProfiles())
                 .build();

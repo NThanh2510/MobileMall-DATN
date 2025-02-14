@@ -3,6 +3,7 @@ package com.datn_phonestore.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -40,13 +41,13 @@ public class TechnicalSpec {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "release_date")
-    private Date releaseDate;
+    private LocalDate releaseDate;
 
     @Column(name = "product_id")
-    private Integer productId; // Chỉ lưu trữ ID của `Product`
+    private Long productId; // Chỉ lưu trữ ID của `Product`
 
     @Column(name = "os")
-    private Integer osId; // Chỉ lưu trữ ID của `OS`
+    private Long osId; // Chỉ lưu trữ ID của `OS`
 
     @Column(name = "design")
     private String design; // Chỉ lưu trữ ID của `Connectivity`

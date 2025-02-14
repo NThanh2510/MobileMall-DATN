@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -26,12 +27,15 @@ public class Voucher {
     @Column(name = "gift")
     String gift;
     @Column(name = "start_date")
-    Date startDate;
+    LocalDate startDate;
     @Column(name = "end_date")
-    Date endDate;
+    LocalDate endDate;
     @Column(name = "status")
     Boolean status;
     @Column(name = "product_id")
     Long productId;
+    @Column(name = "kcid")
+    String kcid;
+
 
 }

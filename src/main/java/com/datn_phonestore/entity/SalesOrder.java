@@ -3,6 +3,7 @@ package com.datn_phonestore.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,7 +13,7 @@ public class SalesOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sales_order_id")
-    private Integer salesOrderId;
+    private Long salesOrderId;
 
     @Column(name = "total_price")
     private Double totalPrice;
@@ -22,8 +23,8 @@ public class SalesOrder {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "order_date")
-    private Date orderDate;
+    private LocalDate orderDate;
 
-    @Column(name = "user_name")
-    private String userName; // Chỉ lưu ID của bảng `accounts`
+    @Column(name = "kcid")
+    private String kcid; // Chỉ lưu ID của bảng `accounts`
 }
