@@ -1,4 +1,4 @@
-package com.datn_phonestore.dto.admin.invoice.request;
+package com.datn_phonestore.dto.admin.sale.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

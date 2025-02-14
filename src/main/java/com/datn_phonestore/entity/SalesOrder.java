@@ -3,6 +3,7 @@ package com.datn_phonestore.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ public class SalesOrder {
     private Long salesOrderId;
 
     @Column(name = "total_price")
-    private Double totalPrice;
+    private BigDecimal totalPrice;
 
     @Column(name = "status")
     private String status;

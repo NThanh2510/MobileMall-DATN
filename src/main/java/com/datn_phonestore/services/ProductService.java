@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface ProductService {
     public ProductResponseInfo create(CreateProductRequest request);
-    List<Product> getallProduct();
+    List<Product> getAllProduct();
 
 }

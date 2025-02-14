@@ -63,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getallProduct() {
+    public List<Product> getAllProduct() {
     var products = productRepository.findAll();
     return  products;
     }

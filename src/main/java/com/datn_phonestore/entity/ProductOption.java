@@ -27,7 +27,7 @@ public class ProductOption {
     @Column(name = "storage_price_adjustment")
     BigDecimal storagePriceAdjustment;
     Integer quantity;
-    @Column(name = "final-price")
+    @Column(name = "final_price")
     BigDecimal finalPrice;
     @Column(name = "product_id")
     Long productId;

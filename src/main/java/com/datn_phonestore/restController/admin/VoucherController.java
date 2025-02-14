@@ -19,9 +19,7 @@ import java.util.List;
 public class VoucherController {
     @Autowired
     VoucherServiceImpl voucherService;
-//
-//    @Autowired
-//    VoucherRepository voucherRepository;
+
 
     @GetMapping("/list")
     public ApiResponse<List<VoucherResponse>> listVoucher() {
