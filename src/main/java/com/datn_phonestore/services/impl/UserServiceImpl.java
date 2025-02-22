@@ -17,6 +17,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import lombok.extern.slf4j.Slf4j;
 import com.datn_phonestore.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,13 +36,13 @@ import java.util.stream.Collectors;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class UserServiceImpl implements UserService {
 
-
+//    @Autowired
     UserRepository userRepository;
-
+//    @Autowired
     UserMapper userMapper;
-
+//    @Autowired
     IdentityClient identityClient;
-
+//    @Autowired
     ErrorNormalizer errorNormalizer;
 
     @Value("${idp.client-secret}")

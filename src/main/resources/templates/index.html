@@ -174,18 +174,26 @@ color: white;
                     <!-- Slide 1 -->
                     <div class="carousel-item active">
                         <div class="row">
-                            <!-- Product 1 -->
-                            <div class=" col-md-3" >
-                                <div class="card product-card card shadow-lg " >
-                                    <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-16-pro-max.png" class="card-img-top" alt="Iphone 1">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title">Sản Phẩm</h5>
-                                        <del class="card-text">10.000.000 đ</del>
-                                        <p class="card-text" >1 đ</p>
-                                        <a th:href="@{/product}" class="btn btn-primary">Mua ngay</a>
-                                    </div>
+                            <!-- tạo div lấy data từ sql -->
+                            <div class="col-sm-6 col-xl-3" th:each="p: ${items}">
+                                <div class="box">
+                                    <a th:href="@{|/home/details/${p.product_id}|}">
+                                        <div class="img-box">
+                                            <img th:src="@{|/img/${p.main_image}|}" alt="">
+                                        </div>
+                                        <div class="detail-box">
+                                            <h6 th:utext="${p.name}"></h6>
+                                            <h6>
+                                                Giá: <span th:utext="${p.base_price}"> </span>
+                                            </h6>
+                                        </div>
+                                        <div class="new">
+                                            <span> Mới </span>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <!-- Slide 2 -->
